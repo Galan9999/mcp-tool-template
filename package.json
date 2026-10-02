@@ -1,0 +1,33 @@
+{
+  "name": "mcp-tool-template",
+  "version": "0.1.0",
+  "private": true,
+  "bin": {
+    "mcp-tool-template": "dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json --watch",
+    "lint": "oxlint",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "test": "vitest run",
+    "smoke": "pnpm build && node scripts/smoke.mjs",
+    "inspect": "pnpm build && npx @modelcontextprotocol/inspector node dist/index.js",
+    "check": "pnpm fmt:check && pnpm lint && pnpm build && pnpm test && pnpm smoke",
+    "call": "node scripts/call.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.31.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "oxfmt": "^0.71.0",
+    "oxlint": "^1.86.0",
+    "oxlint-tsgolint": "^7.0.2003",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}
